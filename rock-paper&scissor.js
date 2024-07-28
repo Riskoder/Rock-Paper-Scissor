@@ -1,4 +1,3 @@
-
 function getComputerChoice(possibleChoices) {
   const computerInput = Math.floor(Math.random() * possibleChoices.length);
   return computerInput
@@ -40,8 +39,8 @@ function playGame() {
   const computerSelection = getComputerChoice(possibleChoices);
 
   for (let countRounds = 1; countRounds <= 5; i++) {
-    const roundWinner = playRound(humanSelection, computerSelection)
-    
+    const roundWinner = playRound(humanSelection, computerSelection);
+
     console.log(`Ronda Número: ${countRounds}`);
     console.log(`La Máquina ha escogido: ${computerSelection}\nEl jugador ha escogido: ${humanSelection}\n`)
     if (roundWinner === 'tie') {
