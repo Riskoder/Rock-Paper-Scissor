@@ -34,25 +34,28 @@ function playGame() {
 
   let humanScore = 0;
   let computerScore = 0;
-  
+
   for (let countRounds = 1; countRounds <= 5; countRounds++) {
+    
     const humanSelection = getHumanChoice(possibleChoices);
     const computerSelection = getComputerChoice(possibleChoices);
+    
+    console.log(`Ronda Número: ${countRounds}`);
+    console.log(`La Máquina ha escogido: ${computerSelection}\nEl jugador ha escogido: ${humanSelection}\n`)
 
     const roundWinner = playRound(humanSelection, computerSelection);
 
-    console.log(`Ronda Número: ${countRounds}`);
-    console.log(`La Máquina ha escogido: ${computerSelection}\nEl jugador ha escogido: ${humanSelection}\n`)
     if (roundWinner === 'tie') {
       console.log('Ha sido un empate');
     } else if (roundWinner === 'player') {
       humanScore++
-      console.log('El jugado ha ganado la ronda. Ha ganado un punto!');
+      console.log(`El jugado ha ganado la ronda. Ha ganado un punto! | puntos: ${humanScore}`);
     } else {
       computerScore++
-      console.log('La Máquina ha ganado la ronda...Ha sumado un punto.');
+      console.log(`La Máquina ha ganado la ronda...Ha sumado un punto. | puntos: ${computerScore}`);
     };
   };
+  
 
   if(humanScore > computerScore) {
     console.log('El jugador ha ganado la partida con un puntaje de: ',humanScore);
