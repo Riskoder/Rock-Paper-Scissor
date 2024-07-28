@@ -5,7 +5,7 @@ function getComputerChoice(possibleChoices) {
 
 function getHumanChoice(possibleChoices) {
   while (true) {
-    const userInput = String(prompt('Escoga alguna opcion: Piedra - Papel o Tijera')).toLowerCase()
+    const userInput = String(prompt('Escoga alguna opcion: Rock - Paper o scissors')).toLowerCase()
     if (!possibleChoices.includes(userInput)) {
       console.log('Opción no válida. Por favor eliga otra!');
       continue;
@@ -20,8 +20,8 @@ function playRound(humanChoice, computerChoice) {
   }
   if (
     (humanChoice === 'paper' && computerChoice === 'rock') ||
-    (humanChoice === 'rock' && computerChoice === 'scissor') || 
-    (humanChoice === 'scissor' && computerChoice === 'paper') 
+    (humanChoice === 'rock' && computerChoice === 'scissors') || 
+    (humanChoice === 'scissors' && computerChoice === 'paper') 
   ) {
     return 'player';
   } else {
@@ -30,7 +30,7 @@ function playRound(humanChoice, computerChoice) {
 };
 
 function playGame() {
-  const possibleChoices = ['paper', 'rock', 'scissor'];
+  const possibleChoices = ['paper', 'rock', 'scissors'];
 
   let humanScore = 0;
   let computerScore = 0;
