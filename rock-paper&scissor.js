@@ -1,11 +1,11 @@
 function getComputerChoice(possibleChoices) {
   const computerInput = Math.floor(Math.random() * possibleChoices.length);
-  return computerInput
+  return possibleChoices[computerInput]
 };
 
 function getHumanChoice(possibleChoices) {
   while (true) {
-    const userInput = String(prompt('Escoga alguna opcion: Piedra - Papel o Tijera')).toLocaleLowerCase()
+    const userInput = String(prompt('Escoga alguna opcion: Piedra - Papel o Tijera')).toLowerCase()
     if (!possibleChoices.includes(userInput)) {
       console.log('Opción no válida. Por favor eliga otra!');
       continue;
@@ -35,10 +35,10 @@ function playGame() {
   let humanScore = 0;
   let computerScore = 0;
   
-  const humanSelection = getHumanChoice(possibleChoices);
-  const computerSelection = getComputerChoice(possibleChoices);
+  for (let countRounds = 1; countRounds <= 5; countRounds++) {
+    const humanSelection = getHumanChoice(possibleChoices);
+    const computerSelection = getComputerChoice(possibleChoices);
 
-  for (let countRounds = 1; countRounds <= 5; i++) {
     const roundWinner = playRound(humanSelection, computerSelection);
 
     console.log(`Ronda Número: ${countRounds}`);
