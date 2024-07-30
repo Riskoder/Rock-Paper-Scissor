@@ -63,18 +63,18 @@ function playGame() {
       const roundWinner = playRound(humanSelection, computerSelection);
     
       if (roundWinner === 'tie') {
-        result.innerHTML = `Empate`;
-        roundtext.innerHTML = `Ambos escogieron: ${humanSelection}`
+        result.innerHTML = `Draw`;
+        roundtext.innerHTML = `Both chose: ${humanSelection}`
       } else if (roundWinner === 'player') {
         humanScore++;
-        result.innerHTML = `HAS GANADO!`;
-        roundtext.innerHTML = `${humanSelection} gana sobre ${computerSelection}`
+        result.innerHTML = `You Win!`;
+        roundtext.innerHTML = `${humanSelection} Beats ${computerSelection}`
         playerPoints.innerHTML = `Puntos: ${humanScore}`
       } else {
         computerScore++;
-        result.innerHTML = 'Has Perdido...'
-        roundtext.innerHTML = `${computerSelection} gana sobre ${humanSelection}`;
-        computerPoints.innerHTML = `Puntos: ${computerScore}`
+        result.innerHTML = 'You lost...'
+        roundtext.innerHTML = `${computerSelection} Beats ${humanSelection}`;
+        computerPoints.innerHTML = `Points: ${computerScore}`
       };
 
       countRounds()
@@ -82,9 +82,9 @@ function playGame() {
       if(humanScore >= 5 || computerScore >= 5) {
         disableButtons()
         if (humanScore > computerScore) {
-          winner.innerHTML = `El jugado ha ganado!`
+          winner.innerHTML = `The Player Has Won!`
         } else {
-          winner.innerHTML = `La maquina ha ganado...`
+          winner.innerHTML = `The Player lost...`
         }
         resetGame();
       };
