@@ -1,0 +1,85 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: white;
+  background-color: rgb(3, 34, 83);
+  font-family: 'Edu AU VIC WA NT Hand', 'roboto';
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  padding: 42px 0;
+  background-color: rgb(5, 26, 59);
+}
+
+.main {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin: 70px auto;
+  max-width: 600px;
+  height: auto;
+}
+
+.combat-area {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.player-area,
+.results-area,
+.computer-area {
+  width: 200px;
+}
+
+.player-points,
+.computer-points,
+.round-results {
+  padding-top: 10px;
+}
+
+.round {
+  margin-top: 10px;
+}
+
+.selections {
+  padding-top: 20px;
+  height: 35px;
+}
+
+.button {
+  width: 80px;
+  height: 40px;
+}
+
+.rock {
+  background-color: grey;
+}
+
+.paper {
+  background-color: antiquewhite;
+}
+
+.scissors {
+  background-color: darkred;
+}
+
+.winner {
+  margin-top: 50px;
+}
+
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+  background-color: rgb(5, 26, 59);
+}
