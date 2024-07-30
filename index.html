@@ -3,9 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap" rel="stylesheet">
   <title>Document</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header class="header">
+    <h1 class="title">
+      <span class="grey-color">ROCK</span> - 
+      <span class="white-color">PAPER</span>-
+      <span class="red-color">SCISSORS</span>
+    </h1>
+  </header>
+
+  <main class="main">
+    <div class="combat-area">
+      <div class="player-area">
+        <p>JUGADOR</p>
+        <p class="player-points">Puntos: 0</p>
+      </div>
+      <div class="results-area">
+        <h3 class="round-results">Resultados</h3>
+        <p class="round-result">Aun no pasa nada...</p>
+        <h3 class="round">Ronda: 1</h3>
+      </div>
+      <div class="computer-area">
+        <p>COMPUTADORA</p>
+        <p class="computer-points">Puntos: 0</p>
+      </div>
+    </div>
+
+    <div class="selections">
+      <button class="button rock" value="rock">ROCK</button>
+      <button class="button paper" value="paper">PAPER</button>
+      <button class="button scissors" value="scissors">SCISSORS</button>
+    </div>
+    <h2 class="winner"></h2>
+  </main>
+
+  <footer class="footer">
+    <p class="footer-paragraph">Creador por: <a class="link" href="https://github.com/Riskoder/Rock-Paper-Scissor/tree/main" target="_blank">Riskoder</a></p>
+  </footer>
+
   <script src="rock-paper&scissor.js"></script>
 </body>
 </html>
