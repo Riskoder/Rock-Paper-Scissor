@@ -1,17 +1,15 @@
+const buttons = document.querySelectorAll('.button');
+const round = document.querySelector('.round');
+const result = document.querySelector('.round-results');
+const roundtext = document.querySelector('.round-result');
+const winner = document.querySelector('.winner');
+const playerPoints = document.querySelector('.player-points')
+const computerPoints = document.querySelector('.computer-points')
+let rounds = 1
+
 function getComputerChoice(possibleChoices) {
   const computerInput = Math.floor(Math.random() * possibleChoices.length);
   return possibleChoices[computerInput]
-};
-
-function getHumanChoice(possibleChoices) {
-  while (true) {
-    const userInput = String(prompt('Escoga alguna opcion: Rock - Paper o scissors')).toLowerCase()
-    if (!possibleChoices.includes(userInput)) {
-      console.log('Opción no válida. Por favor eliga otra!');
-      continue;
-    };
-    return userInput;
-  };
 };
 
 function playRound(humanChoice, computerChoice) {
@@ -29,41 +27,69 @@ function playRound(humanChoice, computerChoice) {
   };
 };
 
+function disableButtons() {
+  buttons.forEach((button) => {
+    button.setAttribute('disabled', '');
+  })
+}
+
+function countRounds() {
+  rounds++;
+  round.innerHTML = `Ronda: ${rounds}`;
+  return rounds
+};
+
+function resetGame() {
+  const resetButton = document.createElement('button')
+  resetButton.textContent = 'RESET';
+  resetButton.style.cssText = 'width: 80px, height: 40px'
+  winner.appendChild(resetButton);
+  resetButton.addEventListener('click', () => {
+    window.location.reload()
+  })
+}
+
 function playGame() {
   const possibleChoices = ['paper', 'rock', 'scissors'];
 
   let humanScore = 0;
   let computerScore = 0;
 
-  for (let countRounds = 1; countRounds <= 5; countRounds++) {
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const humanSelection = button.value;
+      const computerSelection = getComputerChoice(possibleChoices);
+      
+      const roundWinner = playRound(humanSelection, computerSelection);
     
-    const humanSelection = getHumanChoice(possibleChoices);
-    const computerSelection = getComputerChoice(possibleChoices);
-    
-    console.log(`Ronda Número: ${countRounds}`);
-    console.log(`La Máquina ha escogido: ${computerSelection}\nEl jugador ha escogido: ${humanSelection}\n`)
+      if (roundWinner === 'tie') {
+        result.innerHTML = `Empate`;
+        roundtext.innerHTML = `Ambos escogieron: ${humanSelection}`
+      } else if (roundWinner === 'player') {
+        humanScore++;
+        result.innerHTML = `HAS GANADO!`;
+        roundtext.innerHTML = `${humanSelection} gana sobre ${computerSelection}`
+        playerPoints.innerHTML = `Puntos: ${humanScore}`
+      } else {
+        computerScore++;
+        result.innerHTML = 'Has Perdido...'
+        roundtext.innerHTML = `${computerSelection} gana sobre ${humanSelection}`;
+        computerPoints.innerHTML = `Puntos: ${computerScore}`
+      };
 
-    const roundWinner = playRound(humanSelection, computerSelection);
-
-    if (roundWinner === 'tie') {
-      console.log('Ha sido un empate');
-    } else if (roundWinner === 'player') {
-      humanScore++
-      console.log(`El jugado ha ganado la ronda. Ha ganado un punto! | puntos: ${humanScore}`);
-    } else {
-      computerScore++
-      console.log(`La Máquina ha ganado la ronda...Ha sumado un punto. | puntos: ${computerScore}`);
-    };
-  };
-  
-
-  if(humanScore > computerScore) {
-    console.log('El jugador ha ganado la partida con un puntaje de: ',humanScore);
-  } else if (humanScore < computerScore) {
-    console.log('El jugador ha perdido contra la maquina. La maquina ha ganado con un puntaje de: ',computerScore);
-  } else {
-    console.log('Ha sido un empate!');
-  };
+      countRounds()
+      
+      if(humanScore >= 5 || computerScore >= 5) {
+        disableButtons()
+        if (humanScore > computerScore) {
+          winner.innerHTML = `El jugado ha ganado!`
+        } else {
+          winner.innerHTML = `La maquina ha ganado...`
+        }
+        resetGame();
+      };
+    })
+  })
 };
 
 playGame();
